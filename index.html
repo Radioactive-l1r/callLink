@@ -43,8 +43,8 @@
 
                     // Add click event listener to each <li> element
                     listItem.addEventListener('click', () => {
-                        // Replace with your desired action, e.g., alerting the number
-                        alert(`You clicked number ${number}`);
+                        // Open tel link to call the number
+                        window.open(`tel:${number}`, '_self');
                     });
 
                     // Append the <li> to the <ul>
