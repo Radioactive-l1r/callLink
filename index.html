@@ -28,7 +28,7 @@
     <script>
         // Function to fetch and display numbers from Google Apps Script
         function fetchAndDisplayNumbers() {
-            fetch('https://script.google.com/macros/s/AKfycbyiZVpN07bCqALKjOMR_n78zOcvRNlClDEsxG3rAf_-6-GOSi1-R7M4j7IepWsxCCYe/exec')
+            fetch('https://script.google.com/macros/s/AKfycbxwc1DDvL_sgGxNmujc2dRyVsNQ29Rb-5XvZ3paShqaC85cNsS5wD_joXbQTkbrFVTf/exec')
                 .then(response => response.json())
                 .then(data => {
                     // Ensure data is an array
@@ -43,9 +43,14 @@
                     numbersList.innerHTML = '';
 
                     // Loop through the array and create <li> elements
-                    data.forEach(number => {
+                    data.forEach(item => {
+                        // Extract name and number from each object
+                        const name = item.name;
+                        const number = item.number;
+
+                        // Create a <li> element
                         const listItem = document.createElement('li');
-                        listItem.textContent = number;
+                        listItem.textContent = `${name}: ${number}`;
 
                         // Add click event listener to each <li> element
                         listItem.addEventListener('click', () => {
