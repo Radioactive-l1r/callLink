@@ -29,7 +29,7 @@
         // Function to fetch and display numbers
         function fetchAndDisplayNumbers() {
             // Fetch the numbers.txt file
-            fetch('numbers.txt')
+            fetch('numbers.txt?2')
                 .then(response => response.text())
                 .then(data => {
                     // Split the fetched data into an array of numbers
