@@ -26,14 +26,15 @@
     </ul>
 
     <script>
-        // Function to fetch and display numbers
+        // Function to fetch and display numbers from Google Apps Script
         function fetchAndDisplayNumbers() {
-            // Fetch the numbers.txt file
-            fetch('numbers.txt?2')
-                .then(response => response.text())
+            fetch('https://script.google.com/macros/s/AKfycbyiZVpN07bCqALKjOMR_n78zOcvRNlClDEsxG3rAf_-6-GOSi1-R7M4j7IepWsxCCYe/exec')
+                .then(response => response.json())
                 .then(data => {
-                    // Split the fetched data into an array of numbers
-                    const numbersArray = data.split(',');
+                    // Ensure data is an array
+                    if (!Array.isArray(data)) {
+                        throw new Error('Data returned is not an array');
+                    }
 
                     // Get the <ul> element to append <li> elements
                     const numbersList = document.getElementById('numbers-list');
@@ -41,8 +42,8 @@
                     // Clear existing list items
                     numbersList.innerHTML = '';
 
-                    // Loop through the numbersArray and create <li> elements
-                    numbersArray.forEach(number => {
+                    // Loop through the array and create <li> elements
+                    data.forEach(number => {
                         const listItem = document.createElement('li');
                         listItem.textContent = number;
 
